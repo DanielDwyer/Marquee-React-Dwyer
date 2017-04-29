@@ -1,0 +1,26 @@
+{
+  "name": "marquee-react-dwyer",
+  "version": "1.0.0",
+  "description": "a universal marquee component for react, just plug in some props and play!",
+  "main": "DwyerMarquee.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielDwyer/Marquee-React-Dwyer.git"
+  },
+  "keywords": [
+    "marquee",
+    "react",
+    "simple",
+    "marquee",
+    "component"
+  ],
+  "author": "daniel dwyer danielpatrickdwyer@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanielDwyer/Marquee-React-Dwyer/issues"
+  },
+  "homepage": "https://github.com/DanielDwyer/Marquee-React-Dwyer#readme"
+}

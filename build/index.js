@@ -96,6 +96,7 @@ module.exports = require("react");
   TimeToCross={"10000"}
   TimeToChange={"2000"}
   IsRandom={"true"}
+  Color={"red"}
 />
 */
 
@@ -247,15 +248,14 @@ var Marquee = function (_React$Component) {
       var styling1 = {
         margin: '0 auto',
         whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        color: 'red'
+        overflow: 'hidden'
       };
 
       var styling2 = {
         display: 'inline-block',
         paddingLeft: '100%',
         animation: 'marquee ' + Number(this.props.TimeToCross) + 'ms linear infinite',
-        color: 'red'
+        color: this.props.Color
       };
 
       return _react2.default.createElement(

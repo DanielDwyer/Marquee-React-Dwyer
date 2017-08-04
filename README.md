@@ -6,8 +6,8 @@
 
 A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
 
-Live Example: http://four-rock.surge.sh/
-Example Repo: https://github.com/DanielDwyer/marquee-react-dwyer-example
+- Live Example: http://four-rock.surge.sh/
+- Example Repo: https://github.com/DanielDwyer/marquee-react-dwyer-example
 
 ## Getting Started
 

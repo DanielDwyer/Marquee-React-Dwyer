@@ -6,6 +6,16 @@
 
 A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
 
+# Alert
+You must add these lines to your CSS or the marquee will NOT work:
+```shell
+@keyframes marquee {
+    0%   { transform: translate(0, 0); animation-timing-function: ease-in;}
+    100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
+}
+```
+
+
 - Live Example: http://four-rock.surge.sh/
 - Example Repo: https://github.com/DanielDwyer/marquee-react-dwyer-example
 

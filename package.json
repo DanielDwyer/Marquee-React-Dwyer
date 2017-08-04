@@ -2,9 +2,18 @@
   "name": "marquee-react-dwyer",
   "version": "2.0.0",
   "description": "a universal marquee component for react, just plug in some props and play!",
-  "main": "DwyerMarquee.js",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^15.5.4"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "webpack": "^2.6.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -22,5 +31,13 @@
   "bugs": {
     "url": "https://github.com/DanielDwyer/Marquee-React-Dwyer/issues"
   },
-  "homepage": "https://github.com/DanielDwyer/Marquee-React-Dwyer#readme"
+  "homepage": "https://github.com/DanielDwyer/Marquee-React-Dwyer#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1"
+  }
 }

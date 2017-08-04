@@ -146,27 +146,28 @@ var Marquee = function (_React$Component) {
   _createClass(Marquee, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
+      console.log("here");
       /*
       +++ Uncomment any line(s) to see the props being passed to the marquee
       */
 
-      // console.log("this.props\n",this.props);//all props
-      // console.log("this.props.size:",this.props.Size);//html element p, h1, h6 ...
-      // console.log("this.props.NumberOfOptions:",this.props.NumberOfOptions);//number of indices in the array of marquee sayings
-      // console.log("this.props.Index0:",this.props.Index0);
-      // console.log("this.props.Index1:",this.props.Index1);
-      // console.log("this.props.Index2:",this.props.Index2);
-      // console.log("this.props.Index3:",this.props.Index3);
-      // console.log("this.props.Index4:",this.props.Index4);
-      // console.log("this.props.index5:",this.props.Index5);
-      // console.log("this.props.Index6:",this.props.Index6);
-      // console.log("this.props.Index7:",this.props.Index7);
-      // console.log("this.props.Index8:",this.props.Index8);
-      // console.log("this.props.Index9:",this.props.Index9);
-      // console.log("this.props.Index10:",this.props.Index10);
-      // console.log("this.props.TimeToCross:",this.props.TimeToCross);
-      // console.log("this.props.TimeToChange:",this.props.TimeToChange);
-      // console.log("this.props.IsRandom",this.props.IsRandom);
+      console.log("this.props\n", this.props); //all props
+      console.log("this.props.size:", this.props.Size); //html element p, h1, h6 ...
+      console.log("this.props.NumberOfOptions:", this.props.NumberOfOptions); //number of indices in the array of marquee sayings
+      console.log("this.props.Index0:", this.props.Index0);
+      console.log("this.props.Index1:", this.props.Index1);
+      console.log("this.props.Index2:", this.props.Index2);
+      console.log("this.props.Index3:", this.props.Index3);
+      console.log("this.props.Index4:", this.props.Index4);
+      console.log("this.props.index5:", this.props.Index5);
+      console.log("this.props.Index6:", this.props.Index6);
+      console.log("this.props.Index7:", this.props.Index7);
+      console.log("this.props.Index8:", this.props.Index8);
+      console.log("this.props.Index9:", this.props.Index9);
+      console.log("this.props.Index10:", this.props.Index10);
+      console.log("this.props.TimeToCross:", this.props.TimeToCross);
+      console.log("this.props.TimeToChange:", this.props.TimeToChange);
+      console.log("this.props.IsRandom", this.props.IsRandom);
 
       var numberOfOptions = this.props.NumberOfOptions;
       var isRandom = this.props.IsRandom;

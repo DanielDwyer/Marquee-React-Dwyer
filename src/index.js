@@ -69,6 +69,7 @@ class Marquee extends React.Component {
 
       //for loop to place marquee sayings into the placeholder array for easy access either in order or randomly
       for(var i = 0; i < Number(numberOfOptions); i++){
+        console.log("looping:",i);
           if(i === 0) {
             this.state.marqueeArr.push(this.props.Index0)
             console.log("pushed Index 0=>",this.props.Index0);

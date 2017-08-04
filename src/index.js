@@ -147,9 +147,9 @@ export default class Marquee extends React.Component {
 
         return (
 
-            <section id="marquee">
+            `<section id="marquee">
               <this.props.Size style={styling1}><span style={styling2}>{ marquee }</span></this.props.Size>
-            </section>
+            </section>`
 
         );
     }

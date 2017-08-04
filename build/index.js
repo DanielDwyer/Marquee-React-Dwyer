@@ -174,39 +174,40 @@ var Marquee = function (_React$Component) {
 
       //for loop to place marquee sayings into the placeholder array for easy access either in order or randomly
       for (var i = 0; i < Number(numberOfOptions); i++) {
+        console.log("looping:", i);
         if (i === 0) {
           this.state.marqueeArr.push(this.props.Index0);
-          // console.log("pushed Index 0=>",this.props.Index0);
+          console.log("pushed Index 0=>", this.props.Index0);
         } else if (i === 1) {
           this.state.marqueeArr.push(this.props.Index1);
-          // console.log("pushed Index 1=>",this.props.Index1);
+          console.log("pushed Index 1=>", this.props.Index1);
         } else if (i === 2) {
           this.state.marqueeArr.push(this.props.Index2);
-          // console.log("pushed Index 2=>",this.props.Index2);
+          console.log("pushed Index 2=>", this.props.Index2);
         } else if (i === 3) {
           this.state.marqueeArr.push(this.props.Index3);
-          // console.log("pushed Index 3=>",this.props.Index3);
+          console.log("pushed Index 3=>", this.props.Index3);
         } else if (i === 4) {
           this.state.marqueeArr.push(this.props.Index4);
-          // console.log("pushed Index 4=>",this.props.Index4);
+          console.log("pushed Index 4=>", this.props.Index4);
         } else if (i === 5) {
           this.state.marqueeArr.push(this.props.Index5);
           // console.log("pushed Index 5=>",this.props.Index5);
         } else if (i === 6) {
           this.state.marqueeArr.push(this.props.Index6);
-          // console.log("pushed Index 6=>",this.props.Index6);
+          console.log("pushed Index 6=>", this.props.Index6);
         } else if (i === 7) {
           this.state.marqueeArr.push(this.props.Index7);
-          // console.log("pushed Index 7=>",this.props.Index7);
+          console.log("pushed Index 7=>", this.props.Index7);
         } else if (i === 8) {
           this.state.marqueeArr.push(this.props.Index8);
-          // console.log("pushed Index 8=>",this.props.Index8);
+          console.log("pushed Index 8=>", this.props.Index8);
         } else if (i === 9) {
           this.state.marqueeArr.push(this.props.Index9);
-          // console.log("pushed Index 9=>",this.props.Index9);
+          console.log("pushed Index 9=>", this.props.Index9);
         } else if (i === 10) {
           this.state.marqueeArr.push(this.props.Index10);
-          // console.log("pushed Index 10=>",this.props.Index10);
+          console.log("pushed Index 10=>", this.props.Index10);
         }
       }
 
@@ -223,11 +224,13 @@ var Marquee = function (_React$Component) {
     key: 'changeMarqueeI',
     value: function changeMarqueeI() {
       var randomIndex = (Math.random() * (this.props.NumberOfOptions - 1)).toFixed(0);
+      console.log(this.state.marqueeArr[randomIndex]);
       this.setState({ marquee: this.state.marqueeArr[randomIndex] });
     }
   }, {
     key: 'changeMarqueeII',
     value: function changeMarqueeII() {
+      console.log(this.state.marqueeArr[counter]);
       this.setState({ marquee: this.state.marqueeArr[counter] });
       counter++;
       if (counter > this.props.NumberOfOptions - 1) {
@@ -239,6 +242,7 @@ var Marquee = function (_React$Component) {
     value: function render() {
 
       var marquee = this.state.marquee;
+      console.log("render:", marquee);
 
       var styling1 = {
         margin: '0 auto',

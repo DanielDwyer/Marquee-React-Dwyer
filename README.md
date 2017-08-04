@@ -2,9 +2,6 @@
 ![Downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)
 ![Downloads](https://img.shields.io/npm/dt/marquee-react-dwyer.svg)
 ![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)
-[comment]: <> (![dependencies](https://img.shields.io/david/jcgertig/marquee-react-dwyer.svg))
-[comment]: <> (
-![dev dependencies](https://img.shields.io/david/dev/jcgertig/marquee-react-dwyer.svg))
 ![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)
 
 A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!

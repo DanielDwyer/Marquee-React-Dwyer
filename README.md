@@ -1,8 +1,13 @@
 # marquee-react-dwyer
+
+# USE grand-marquee-react instead (this pj is being deprecated May1, 2018)
 ![Downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)
 ![Downloads](https://img.shields.io/npm/dt/marquee-react-dwyer.svg)
 ![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)
 ![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)
+
+**This package is being DEPRECATED on May 1, 2018***
+Moving forward please use the npm package grand-marquee-react (conceptually similar, easier and more efficient) [https://www.npmjs.com/package/grand-marquee-react].
 
 A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
 

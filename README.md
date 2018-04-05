@@ -20,8 +20,7 @@ You must add these lines to your CSS or the marquee will NOT work:
 ```
 
 
-- Live Example: http://four-rock.surge.sh/
-- Example Repo: https://github.com/DanielDwyer/marquee-react-dwyer-example
+- Live Example: Coming Soon
 
 ## Getting Started
 

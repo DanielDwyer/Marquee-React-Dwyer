@@ -74,7 +74,7 @@ class Marquee extends React.Component {
   componentDidMount(){
     this.setState({
       currentlyDisplayed: this.props.Index0,
-      totalDisplays: this.props.totalDisplays || 1,
+      totalDisplays: this.props.NumberOfOptions || 1,
       changeTime: this.props.TimeToChange || 2000,
       crossTime: this.props.TimeToCross || 8000,
       randomDisplayChange: this.props.IsRandom || false,

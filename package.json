@@ -1,6 +1,6 @@
 {
   "name": "marquee-react-dwyer",
-  "version": "5.7.3",
+  "version": "5.7.4",
   "description": "a universal marquee component for react, just plug in some props and play!",
   "main": "build/index.js",
   "peerDependencies": {

@@ -72,6 +72,7 @@ class Marquee extends React.Component {
   }
 
   componentDidMount(){
+    console.log("PROPS <>",this.props)
     this.setState({
       currentlyDisplayed: this.props.Index0,
       totalDisplays: this.props.NumberOfOptions || 1,

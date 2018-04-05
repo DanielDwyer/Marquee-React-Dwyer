@@ -1,6 +1,5 @@
 # marquee-react-dwyer
 
-### Please use grand-marquee-react instead (this pj is being deprecated May1, 2018)
 ![Downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)
 ![Downloads](https://img.shields.io/npm/dt/marquee-react-dwyer.svg)
 ![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)

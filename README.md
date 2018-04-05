@@ -20,7 +20,7 @@ You must add these lines to your CSS or the marquee will NOT work:
 ```
 
 
-- Live Example: Coming Soon
+- Live Example: http://null-yard.surge.sh/
 
 ## Getting Started
 

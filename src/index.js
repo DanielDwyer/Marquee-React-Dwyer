@@ -20,30 +20,7 @@
 />
 */
 
-/*
-@keyframes marquee {
-    0%   { transform: translate(0, 0); animation-timing-function: ease-in;}
-    100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
-}
-*/
-/*
-** <Marquee
-**   totalDisplays={Integer: Min 1, Max 10}
-**   display1={String: display string one}
-**   ...
-**   display11={String: display string eleven}
-**   changeTime={Integer: in miliseconds, defaults to 2000}
-**   crossTime={Integer: in miliseconds, defaults to 8000}
-**   randomDisplayChange={Boolean: defaults to false}
-**   htmlTag={HTML tag name: 'h1',...,'h6', 'p', etc., defaults to 'h3'}
-**   color={String: css acceptable color, lowercase, default purple}
-** />
 
-** @keyframes marquee {
-**     0%   { transform: translate(0, 0); animation-timing-function: ease-in;}
-**     100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
-** }
-*/
 import React from 'react'
 class Marquee extends React.Component {
   constructor(props) {
@@ -72,13 +49,17 @@ class Marquee extends React.Component {
   }
 
   componentDidMount(){
-    console.log("PROPS <>",this.props)
+    if(this.props.IsRandom === "false"){
+      var rand = false
+    }else{
+      var rand = true
+    }
     this.setState({
       currentlyDisplayed: this.props.Index0,
       totalDisplays: this.props.NumberOfOptions || 1,
       changeTime: this.props.TimeToChange || 2000,
       crossTime: this.props.TimeToCross || 8000,
-      randomDisplayChange: this.props.IsRandom || false,
+      randomDisplayChange: rand || false,
       htmlTag: this.props.Size || 'h3',
       color: this.props.Color || 'purple'
     })
@@ -92,36 +73,39 @@ class Marquee extends React.Component {
     this.props.Index7 ? this.setState({display8: this.props.Index7}) : delete this.state.display8
     this.props.Index8 ? this.setState({display9: this.props.Index8}) : delete this.state.display9
     this.props.Index9 ? this.setState({display10: this.props.Index9}) : delete this.state.display10
-    
+
     setTimeout(function() { this.marqueeDisplayChange() }.bind(this), 250);
   }
 
     marqueeDisplayChange () {
-
       if(this.state.randomDisplayChange){
 
         var that = this
         var intervalTime = this.state.changeTime
-        
+
         setInterval(function() {
           var randomIndex = Math.floor((Math.random() * that.state.totalDisplays) + 1)
           that.setState({
             currentlyDisplayedData: that.state["display"+randomIndex]
           })
         }, intervalTime);
-        
+
       }else{
-  
+
         var that = this
         var intervalTime = this.state.changeTime
-        
+
         setInterval(function() {
           var nextIndex = that.state.currentlyDisplayedIndex
           var updateStateWith = nextIndex + 1
-          updateStateWith ===  (that.state.totalDisplays + 1) ? updateStateWith = 0 : updateStateWith = nextIndex + 1
+          if(updateStateWith == (Number(that.state.totalDisplays)+1)){
+            updateStateWith = 1
+          }else{
+            updateStateWith = nextIndex + 1
+          }
           that.setState({currentlyDisplayedData: that.state["display"+nextIndex],currentlyDisplayedIndex: updateStateWith})
         }, intervalTime);
-        
+
       }
     }
 

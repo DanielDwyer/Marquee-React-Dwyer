@@ -26,137 +26,118 @@
     100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
 }
 */
+/*
+** <Marquee
+**   totalDisplays={Integer: Min 1, Max 10}
+**   display1={String: display string one}
+**   ...
+**   display11={String: display string eleven}
+**   changeTime={Integer: in miliseconds, defaults to 2000}
+**   crossTime={Integer: in miliseconds, defaults to 8000}
+**   randomDisplayChange={Boolean: defaults to false}
+**   htmlTag={HTML tag name: 'h1',...,'h6', 'p', etc., defaults to 'h3'}
+**   color={String: css acceptable color, lowercase, default purple}
+** />
 
+** @keyframes marquee {
+**     0%   { transform: translate(0, 0); animation-timing-function: ease-in;}
+**     100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
+** }
+*/
 import React from 'react'
-var counter = 0;
-
 class Marquee extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            marquee: this.props.Index0,
-            marqueeArr: []
-        };
-        this.changeMarqueeI = this.changeMarqueeI.bind(this);
-        this.changeMarqueeII = this.changeMarqueeII.bind(this);
-    }
+  constructor(props) {
+      super(props);
+      this.state = {
+        totalDisplays:10,
+        display1:'a',
+        display2:'b',
+        display3:'c',
+        display4:'d',
+        display5:'e',
+        display6:'f',
+        display7:'g',
+        display8:'h',
+        display9:'i',
+        display10:'j',
+        changeTime:1000,
+        crossTime:10000,
+        randomDisplayChange:false,
+        htmlTag:'h1',
+        color:'purple',
+        currentlyDisplayedIndex: 1,
+        currentlyDisplayedData: 'loading...'
+      };
+      this.marqueeDisplayChange = this.marqueeDisplayChange.bind(this);
+  }
 
-    componentWillMount(){
-  
-      /*
-      +++ Uncomment any line(s) to see the props being passed to the marquee
-      */
+  componentDidMount(){
+    this.setState({
+      currentlyDisplayed: this.props.Index0,
+      totalDisplays: this.props.totalDisplays || 1,
+      changeTime: this.props.TimeToChange || 2000,
+      crossTime: this.props.TimeToCross || 8000,
+      randomDisplayChange: this.props.IsRandom || false,
+      htmlTag: this.props.Size || 'h3',
+      color: this.props.Color || 'purple'
+    })
+    this.props.Index0 ? this.setState({display1: this.props.Index0}) : delete this.state.display1
+    this.props.Index1 ? this.setState({display2: this.props.Index1}) : delete this.state.display2
+    this.props.Index2 ? this.setState({display3: this.props.Index2}) : delete this.state.display3
+    this.props.Index3 ? this.setState({display4: this.props.Index3}) : delete this.state.display4
+    this.props.Index4 ? this.setState({display5: this.props.Index4}) : delete this.state.display5
+    this.props.Index5 ? this.setState({display6: this.props.Index5}) : delete this.state.display6
+    this.props.Index6 ? this.setState({display7: this.props.Index6}) : delete this.state.display7
+    this.props.Index7 ? this.setState({display8: this.props.Index7}) : delete this.state.display8
+    this.props.Index8 ? this.setState({display9: this.props.Index8}) : delete this.state.display9
+    this.props.Index9 ? this.setState({display10: this.props.Index9}) : delete this.state.display10
+    
+    setTimeout(function() { this.marqueeDisplayChange() }.bind(this), 250);
+  }
 
-      // console.log("this.props\n",this.props);//all props
-      // console.log("this.props.size:",this.props.Size);//html element p, h1, h6 ...
-      // console.log("this.props.NumberOfOptions:",this.props.NumberOfOptions);//number of indices in the array of marquee sayings
-      // console.log("this.props.Index0:",this.props.Index0);
-      // console.log("this.props.Index1:",this.props.Index1);
-      // console.log("this.props.Index2:",this.props.Index2);
-      // console.log("this.props.Index3:",this.props.Index3);
-      // console.log("this.props.Index4:",this.props.Index4);
-      // console.log("this.props.index5:",this.props.Index5);
-      // console.log("this.props.Index6:",this.props.Index6);
-      // console.log("this.props.Index7:",this.props.Index7);
-      // console.log("this.props.Index8:",this.props.Index8);
-      // console.log("this.props.Index9:",this.props.Index9);
-      // console.log("this.props.Index10:",this.props.Index10);
-      // console.log("this.props.TimeToCross:",this.props.TimeToCross);
-      // console.log("this.props.TimeToChange:",this.props.TimeToChange);
-      // console.log("this.props.IsRandom",this.props.IsRandom);
+    marqueeDisplayChange () {
 
-      var numberOfOptions = this.props.NumberOfOptions;
-      var isRandom = this.props.IsRandom;
+      if(this.state.randomDisplayChange){
 
-      //for loop to place marquee sayings into the placeholder array for easy access either in order or randomly
-      for(var i = 0; i < Number(numberOfOptions); i++){
-        // console.log("looping:",i);
-          if(i === 0) {
-            this.state.marqueeArr.push(this.props.Index0)
-            // console.log("pushed Index 0=>",this.props.Index0);
-          }else if( i === 1){
-            this.state.marqueeArr.push(this.props.Index1)
-            // console.log("pushed Index 1=>",this.props.Index1);
-          }else if( i === 2){
-            this.state.marqueeArr.push(this.props.Index2)
-            // console.log("pushed Index 2=>",this.props.Index2);
-          }else if( i === 3){
-            this.state.marqueeArr.push(this.props.Index3)
-            // console.log("pushed Index 3=>",this.props.Index3);
-          }else if( i === 4){
-            this.state.marqueeArr.push(this.props.Index4)
-            // console.log("pushed Index 4=>",this.props.Index4);
-          }else if( i === 5){
-            this.state.marqueeArr.push(this.props.Index5)
-            // console.log("pushed Index 5=>",this.props.Index5);
-          }else if( i === 6){
-            this.state.marqueeArr.push(this.props.Index6)
-            // console.log("pushed Index 6=>",this.props.Index6);
-          }else if( i === 7){
-            this.state.marqueeArr.push(this.props.Index7)
-            // console.log("pushed Index 7=>",this.props.Index7);
-          }else if( i === 8){
-            this.state.marqueeArr.push(this.props.Index8)
-            // console.log("pushed Index 8=>",this.props.Index8);
-          }else if( i === 9){
-            this.state.marqueeArr.push(this.props.Index9)
-            // console.log("pushed Index 9=>",this.props.Index9);
-          }else if( i === 10){
-            this.state.marqueeArr.push(this.props.Index10)
-            // console.log("pushed Index 10=>",this.props.Index10);
-          }
-      }
-
-      //some things need to be numbers not strings
-      var timeToChange = Number(this.props.TimeToChange)//the time in ms that each marquee saying changes
-
-      if(this.props.IsRandom == "true"){
-        var changeMarquee = setInterval(this.changeMarqueeI, timeToChange);
+        var that = this
+        var intervalTime = this.state.changeTime
+        
+        setInterval(function() {
+          var randomIndex = Math.floor((Math.random() * that.state.totalDisplays) + 1)
+          that.setState({
+            currentlyDisplayedData: that.state["display"+randomIndex]
+          })
+        }, intervalTime);
+        
       }else{
-        var changeMarquee = setInterval(this.changeMarqueeII, timeToChange);
-      }
-    }
-
-    changeMarqueeI (){
-      var randomIndex = (Math.random()*(this.props.NumberOfOptions-1)).toFixed(0);
-      // console.log(this.state.marqueeArr[randomIndex]);
-      this.setState({marquee: this.state.marqueeArr[randomIndex]})
-    }
-
-    changeMarqueeII (){
-      // console.log(this.state.marqueeArr[counter]);
-      this.setState({marquee: this.state.marqueeArr[counter]})
-      counter++;
-      if(counter > (this.props.NumberOfOptions -1)){
-        counter = 0;
+  
+        var that = this
+        var intervalTime = this.state.changeTime
+        
+        setInterval(function() {
+          var nextIndex = that.state.currentlyDisplayedIndex
+          var updateStateWith = nextIndex + 1
+          updateStateWith ===  (that.state.totalDisplays + 1) ? updateStateWith = 0 : updateStateWith = nextIndex + 1
+          that.setState({currentlyDisplayedData: that.state["display"+nextIndex],currentlyDisplayedIndex: updateStateWith})
+        }, intervalTime);
+        
       }
     }
 
     render() {
+      var marquee = this.state.currentlyDisplayedData
+      let style1 =  {margin: '0 auto',whiteSpace: 'nowrap',overflow: 'hidden'}
+      let style2 = {display: 'inline-block',paddingLeft: '100%',animation: 'marquee '+Number(this.state.crossTime)+'ms linear infinite',color: this.state.color}
 
-      var marquee = this.state.marquee;
-      // console.log("render:",marquee);
+      return (
 
-      let styling1 =  {
-          margin: '0 auto',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden'
-      }
+        <section id="marquee">
+          <this.state.htmlTag style={ style1 }>
+            <span style={ style2 }>{ marquee }</span>
+          </this.state.htmlTag>
+        </section>
 
-      let styling2 = {
-          display: 'inline-block',
-          paddingLeft: '100%',
-          animation: 'marquee '+Number(this.props.TimeToCross)+'ms linear infinite',
-          color: this.props.Color
-      }
-
-        return (
-
-            <section id="marquee">
-              <this.props.Size style={styling1}><span style={styling2}>{ marquee }</span></this.props.Size>
-            </section>
-
-        );
+      );
     }
 }
 

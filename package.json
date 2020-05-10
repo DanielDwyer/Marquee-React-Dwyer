@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanielDwyer/Marquee-React-Dwyer.git"
+    "url": "https://github.com/DanielDwyer/Marquee-React-Dwyer"
   },
   "keywords": [
     "marquee",

@@ -1,6 +1,6 @@
 {
   "name": "marquee-react-dwyer",
-  "version": "5.7.91",
+  "version": "5.7.92",
   "description": "a universal marquee component for react, just plug in some props and play!",
   "main": "build/index.js",
   "peerDependencies": {
@@ -37,6 +37,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "webpack-cli": "^3.3.11"
   }
 }

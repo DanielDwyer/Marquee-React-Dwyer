@@ -1,47 +1,46 @@
-'use strict'
-
+'use strict';
+import React from 'react';
 /*
+Example useage
 <Marquee
-  Size={"h1"}
-  NumberOfOptions={"9"}
-  Index0={"Hey There"}
-  Index1={"I was"}
-  Index2={"looking for a marquee"}
-  Index3={"to use in a"}
-  Index4={"react application."}
-  Index5={"I never"}
-  Index6={"found a good one."}
-  Index7={"So I made one for us all."}
-  Index8={"Your help is welcome."}
-  TimeToCross={"10000"}
-  TimeToChange={"2000"}
-  IsRandom={"true"}
-  Color={"red"}
+  Size={'h1'}
+  NumberOfOptions={'9'}
+  Index0={'Hey There'}
+  Index1={'I was'}
+  Index2={'looking for a marquee'}
+  Index3={'to use in a'}
+  Index4={'react application.'}
+  Index5={'I never'}
+  Index6={'found a good one.'}
+  Index7={'So I made one for us all.'}
+  Index8={'Your help is welcome.'}
+  TimeToCross={'10000'}
+  TimeToChange={'2000'}
+  IsRandom={'true'}
+  Color={'red'}
 />
 */
 
-
-import React from 'react'
 class Marquee extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
         totalDisplays:10,
-        display1:'a',
-        display2:'b',
-        display3:'c',
-        display4:'d',
-        display5:'e',
-        display6:'f',
-        display7:'g',
-        display8:'h',
-        display9:'i',
-        display10:'j',
-        changeTime:1000,
-        crossTime:10000,
-        randomDisplayChange:false,
-        htmlTag:'h1',
-        color:'purple',
+        display1: 'a',
+        display2: 'b',
+        display3: 'c',
+        display4: 'd',
+        display5: 'e',
+        display6: 'f',
+        display7: 'g',
+        display8: 'h',
+        display9: 'i',
+        display10: 'j',
+        changeTime: 1000,
+        crossTime: 10000,
+        randomDisplayChange: false,
+        htmlTag: 'h1',
+        color: 'purple',
         currentlyDisplayedIndex: 1,
         currentlyDisplayedData: 'loading...'
       };
@@ -49,11 +48,8 @@ class Marquee extends React.Component {
   }
 
   componentDidMount(){
-    if(this.props.IsRandom === "false"){
-      var rand = false
-    }else{
-      var rand = true
-    }
+    const rand = this.props.IsRandom === 'true';
+
     this.setState({
       currentlyDisplayed: this.props.Index0,
       totalDisplays: this.props.NumberOfOptions || 1,
@@ -63,6 +59,7 @@ class Marquee extends React.Component {
       htmlTag: this.props.Size || 'h3',
       color: this.props.Color || 'purple'
     })
+
     this.props.Index0 ? this.setState({display1: this.props.Index0}) : delete this.state.display1
     this.props.Index1 ? this.setState({display2: this.props.Index1}) : delete this.state.display2
     this.props.Index2 ? this.setState({display3: this.props.Index2}) : delete this.state.display3
@@ -79,49 +76,46 @@ class Marquee extends React.Component {
 
     marqueeDisplayChange () {
       if(this.state.randomDisplayChange){
-
-        var that = this
-        var intervalTime = this.state.changeTime
-
-        setInterval(function() {
-          var randomIndex = Math.floor((Math.random() * that.state.totalDisplays) + 1)
-          that.setState({
-            currentlyDisplayedData: that.state["display"+randomIndex]
-          })
-        }, intervalTime);
-
+        setInterval(() => {
+          const randomIndex = Math.floor((Math.random() * this.state.totalDisplays) + 1)
+          this.setState({
+            currentlyDisplayedData: this.state['display'+randomIndex]
+          });
+        }, this.state.changeTime);
       }else{
-
-        var that = this
-        var intervalTime = this.state.changeTime
-
-        setInterval(function() {
-          var nextIndex = that.state.currentlyDisplayedIndex
+        setInterval(() => {
+          var nextIndex = this.state.currentlyDisplayedIndex
           var updateStateWith = nextIndex + 1
-          if(updateStateWith == (Number(that.state.totalDisplays)+1)){
-            updateStateWith = 1
-          }else{
-            updateStateWith = nextIndex + 1
-          }
-          that.setState({currentlyDisplayedData: that.state["display"+nextIndex],currentlyDisplayedIndex: updateStateWith})
-        }, intervalTime);
+          if (updateStateWith == (Number(this.state.totalDisplays)+1)) updateStateWith = 1;
+          else updateStateWith = nextIndex + 1;
+          this.setState({ 
+            currentlyDisplayedData: this.state['display'+nextIndex],
+            currentlyDisplayedIndex: updateStateWith
+          });
+        }, this.state.changeTime);
 
       }
     }
 
     render() {
-      var marquee = this.state.currentlyDisplayedData
-      let style1 =  {margin: '0 auto',whiteSpace: 'nowrap',overflow: 'hidden'}
-      let style2 = {display: 'inline-block',paddingLeft: '100%',animation: 'marquee '+Number(this.state.crossTime)+'ms linear infinite',color: this.state.color}
-
+      var marquee = this.state.currentlyDisplayedData;
+      let style1 =  {
+        margin: '0 auto',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+      };
+      let style2 = {
+        display: 'inline-block',
+        paddingLeft: '100%',
+        animation: 'marquee ' + Number(this.state.crossTime) + 'ms linear infinite',
+        color: this.state.color,
+      };
       return (
-
-        <section id="marquee">
+        <section id='marquee'>
           <this.state.htmlTag style={ style1 }>
             <span style={ style2 }>{ marquee }</span>
           </this.state.htmlTag>
         </section>
-
       );
     }
 }

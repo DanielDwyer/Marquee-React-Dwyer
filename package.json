@@ -1,6 +1,6 @@
 {
   "name": "marquee-react-dwyer",
-  "version": "5.7.9",
+  "version": "5.7.91",
   "description": "a universal marquee component for react, just plug in some props and play!",
   "main": "build/index.js",
   "peerDependencies": {
@@ -8,10 +8,9 @@
   },
   "dependencies": {
     "react": "^15.5.4",
-    "webpack": "^2.6.1"
+    "webpack": "^4.43.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
     "build": "webpack"
   },

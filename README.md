@@ -5,8 +5,6 @@
 ![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)
 ![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)
 
-**UPDATE: This package is NOT being deprecated (as originally announced, warranted due to growing use)***
-
 A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
 
 # Alert
@@ -26,7 +24,7 @@ You must add these lines to your CSS or the marquee will NOT work:
 Install it via npm:
 
 ```shell
-npm i --save marquee-react-dwyer
+npm i marquee-react-dwyer
 ```
 
 
@@ -40,23 +38,23 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Marquee
-		  Size={"h1"}
-		  NumberOfOptions={"9"}
-		  Index0={"Hey There ..."}
-		  Index1={"I was ..."}
-		  Index2={"looking for a marquee ..."}
-		  Index3={"to use in a ..."}
-		  Index4={"react application."}
-		  Index5={"I never ..."}
-		  Index6={"found one."}
-		  Index7={"So I made one for all to use."}
-		  Index8={"Your contributions are encouraged!"}
-		  TimeToCross={"10000"}
-		  TimeToChange={"2000"}
-		  IsRandom={"true"}
-		  Color={"red"}
+		  Size={'h1'}
+		  NumberOfOptions={'9'}
+		  Index0={'Hey There ...'}
+		  Index1={'I was ...'}
+		  Index2={'looking for a marquee ...'}
+		  Index3={'to use in a ...'}
+		  Index4={'react application.'}
+		  Index5={'I never ...'}
+		  Index6={'found one.'}
+		  Index7={'So I made one for all to use.'}
+		  Index8={'Your contributions are encouraged!'}
+		  TimeToCross={'10000'}
+		  TimeToChange={'2000'}
+		  IsRandom={'true'}
+		  Color={'red'}
 		/>
       </div>
     );
@@ -113,7 +111,7 @@ The color of the text in the marquee.
 
 MIT
 
-Copyright 2018 Daniel P. Dwyer
+Copyright 2020 Daniel P. Dwyer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

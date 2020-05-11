@@ -17,7 +17,7 @@ You must add these lines to your CSS or the marquee will NOT work:
 ```
 
 
-- Live Example: http://null-yard.surge.sh/
+- Live Example: https://marquee-react-dwyer.surge.sh/
 
 ## Getting Started
 

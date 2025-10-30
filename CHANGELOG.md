@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.0.1...v1.1.0) (2025-10-30)
+
+
+### Features
+
+* **demo:** newspaper-style landing ([#25](https://github.com/DanielDwyer/Marquee-React-Dwyer/issues/25)) ([da7286d](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/da7286d52ed086f3e52947bb61e1e5c79ef7d46f))
+
 ## [1.0.1](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.0.0...v1.0.1) (2025-10-30)
 
 

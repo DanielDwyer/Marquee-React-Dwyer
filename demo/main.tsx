@@ -28,8 +28,8 @@ root.render(
               'Customize speed, order, and element with ease',
               'Now featuring a delightful newspaper demo',
             ]}
-            changeIntervalMs={5000}
-            crossTimeMs={24000}
+            changeIntervalMs={10000}
+            crossTimeMs={48000}
             random
             as="h2"
             color="#b23a48"
@@ -66,8 +66,8 @@ root.render(
                 'Sports: home team wins in overtime',
                 'Travel: expect smooth transitions',
               ]}
-              changeIntervalMs={3600}
-              crossTimeMs={18000}
+              changeIntervalMs={3200}
+              crossTimeMs={16000}
               as="p"
               color="#1d1b16"
             />

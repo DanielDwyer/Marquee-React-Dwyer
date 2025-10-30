@@ -1,2 +1,10 @@
 .DS_Store
 node_modules
+# Build & cache
+dist/
+demo-dist/
+node_modules/
+npm-cache/
+coverage/
+storybook-static/
+.DS_Store

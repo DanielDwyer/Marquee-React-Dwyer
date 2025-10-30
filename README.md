@@ -5,7 +5,40 @@
 ![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)
 ![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)
 
-A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
+Modern, typed marquee component for React 16.8+ (hooks) with ESM/CJS bundles.
+
+## Quick Start (v6)
+
+```bash
+npm i marquee-react-dwyer
+```
+
+```tsx
+import { Marquee } from 'marquee-react-dwyer';
+
+export default function Example() {
+  return (
+    <Marquee
+      texts={[
+        'Hey There ...',
+        'I was ...',
+        'looking for a marquee ...',
+      ]}
+      changeIntervalMs={2000}
+      crossTimeMs={10000}
+      random
+      as="h1"
+      color="red"
+    />
+  );
+}
+```
+
+Note: The component injects a `@keyframes marquee` definition automatically if not present.
+
+## Migrating from v5
+
+The legacy props `Index0..Index10`, `NumberOfOptions`, `TimeToCross`, `TimeToChange`, `IsRandom`, `Size`, and `Color` are still accepted, but are deprecated. Prefer the new API: `texts`, `crossTimeMs`, `changeIntervalMs`, `random`, `as`, `color`.
 
 # Alert
 You must add these lines to your CSS or the marquee will NOT work:
@@ -28,7 +61,7 @@ npm i marquee-react-dwyer
 ```
 
 
-## Example
+## Example (legacy API)
 
 ```html
 import React, { Component } from 'react';

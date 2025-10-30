@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.0.0...v1.0.1) (2025-10-30)
+
+
+### Bug Fixes
+
+* **docs:** clarify manual retry to trigger patch release ([#23](https://github.com/DanielDwyer/Marquee-React-Dwyer/issues/23)) ([9f6e10f](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/9f6e10fe6d3686dc8b0c218c1f075b5cbed1546c))
+
 # 1.0.0 (2025-10-30)
 
 

@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.1.0...v1.2.0) (2025-10-30)
+
+
+### Bug Fixes
+
+* **demo:** resolve merge conflicts and finalize ticker stability CSS ([027dabd](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/027dabdb3dc8fa34baedcabbacbd097b75f1a9ea))
+* **demo:** stabilize marquee height and reduce flicker (overflow hidden, fixed hero height, GPU hints) ([bb9825d](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/bb9825dcbb7d47f4b247df6b64daaee3480fc551))
+
+
+### Features
+
+* **demo:** newspaper-style landing with multiple marquees and lorem ipsum ([fa73393](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/fa733931d5884a0c3f7affa408d2c64482ed5779))
+
 # [1.1.0](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.0.1...v1.1.0) (2025-10-30)
 
 

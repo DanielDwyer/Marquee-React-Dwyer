@@ -143,4 +143,4 @@ Required secret for publishing:
 
 Manually retrying a release:
 
-- Re-run the failed “Release” workflow run on `main`, or push a docs-only commit to `main` to trigger a new release run.
+- Re-run the failed “Release” workflow run on `main`, or push a docs-only commit with a Conventional Commit (e.g., `fix: docs`) to trigger a new patch release.

@@ -1,0 +1,94 @@
+/* Minimal newspaper-inspired demo styles */
+
+:root {
+  --bg: #f8f5f0;
+  --ink: #1d1b16;
+  --muted-ink: #4b463d;
+  --accent: #b23a48; /* muted red */
+  --rule: #d5cfc4;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.masthead {
+  text-align: center;
+  border-bottom: 3px double var(--rule);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.brand {
+  letter-spacing: 2px;
+  font-size: 44px;
+  margin: 0;
+}
+
+.dateline {
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  padding: 16px 0 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero h2 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+}
+
+.lead {
+  font-size: 18px;
+  color: var(--muted-ink);
+}
+
+.ticker {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+  margin: 16px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.card h3 { margin-top: 0; }
+.card p { margin: 0.5rem 0; }
+
+.byline { color: var(--muted-ink); font-style: italic; font-size: 14px; }
+
+.footer {
+  margin-top: 40px;
+  border-top: 3px double var(--rule);
+  padding-top: 16px;
+  text-align: center;
+  color: var(--muted-ink);
+  font-size: 14px;
+}
+
+/* Marquee local overrides for demo */
+.ticker h1, .ticker h2, .ticker p { margin: 0; }
+
+

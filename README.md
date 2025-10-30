@@ -128,7 +128,7 @@ This package follows semver. Breaking changes will bump the major version.
 
 ## License
 
-MIT © Daniel P. Dwyer
+MIT © Daniel P. Dwyer (https://www.linkedin.com/in/inmocnideknil/)
 
 ## Release and publishing
 

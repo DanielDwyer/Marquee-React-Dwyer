@@ -8,8 +8,14 @@
   --rule: #d5cfc4;
 }
 
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -82,7 +88,6 @@ body {
   margin-top: 16px;
 }
 
-<<<<<<< HEAD
 .card h3 {
   margin-top: 0;
 }
@@ -95,12 +100,6 @@ body {
   font-style: italic;
   font-size: 14px;
 }
-=======
-.card h3 { margin-top: 0; }
-.card p { margin: 0.5rem 0; }
-
-.byline { color: var(--muted-ink); font-style: italic; font-size: 14px; }
->>>>>>> origin/main
 
 .footer {
   margin-top: 40px;
@@ -112,7 +111,9 @@ body {
 }
 
 /* Marquee local overrides for demo */
-.ticker h1, .ticker h2, .ticker p {
+.ticker h1,
+.ticker h2,
+.ticker p {
   margin: 0;
   line-height: 1.2;
   white-space: nowrap; /* ensure single line */

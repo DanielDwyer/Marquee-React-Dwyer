@@ -1,120 +1,131 @@
 # marquee-react-dwyer
 
-![Downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)
-![Downloads](https://img.shields.io/npm/dt/marquee-react-dwyer.svg)
-![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)
-![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)
+[![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
+[![downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
+[![license](https://img.shields.io/npm/l/marquee-react-dwyer.svg)](./LICENSE)
 
-A horizontal marquee component for React.js. All you do is install, require, and plug in your props and you have a full fledged marquee!
+Modern, typed marquee component for React 16.8+ (Hooks). Ships ESM and CJS builds.
 
-# Alert
-You must add these lines to your CSS or the marquee will NOT work:
-```shell
-@keyframes marquee {
-    0%   { transform: translate(0, 0); animation-timing-function: ease-in;}
-    100% { transform: translate(-100%, 0); animation-timing-function: ease-out;}
+## Features
+
+- Simple API: pass `texts` and timing props
+- Works with SSR and client-side apps
+- TypeScript types included
+- Tree-shakeable ESM build
+- Zero runtime deps beyond React
+
+## Install
+
+```bash
+npm i marquee-react-dwyer
+# or
+pnpm add marquee-react-dwyer
+# or
+yarn add marquee-react-dwyer
+```
+
+Peer requirements:
+
+- React >= 16.8
+
+## Quick start
+
+```tsx
+import { Marquee } from 'marquee-react-dwyer';
+
+export default function Example() {
+  return (
+    <Marquee
+      texts={['Hey There ...', 'I was ...', 'looking for a marquee ...']}
+      changeIntervalMs={2000}
+      crossTimeMs={10000}
+      random
+      as="h1"
+      color="red"
+    />
+  );
 }
 ```
 
+## Styling and keyframes
 
-- Live Example: https://marquee-react-dwyer.surge.sh/
+The component will automatically inject a default `@keyframes marquee` animation if one is not already present. To customize the easing or behavior, define your own keyframes in your global CSS to override the default:
 
-## Getting Started
-
-Install it via npm:
-
-```shell
-npm i marquee-react-dwyer
-```
-
-
-## Example
-
-```html
-import React, { Component } from 'react';
-import Marquee from 'marquee-react-dwyer';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className='App'>
-        <Marquee
-		  Size={'h1'}
-		  NumberOfOptions={'9'}
-		  Index0={'Hey There ...'}
-		  Index1={'I was ...'}
-		  Index2={'looking for a marquee ...'}
-		  Index3={'to use in a ...'}
-		  Index4={'react application.'}
-		  Index5={'I never ...'}
-		  Index6={'found one.'}
-		  Index7={'So I made one for all to use.'}
-		  Index8={'Your contributions are encouraged!'}
-		  TimeToCross={'10000'}
-		  TimeToChange={'2000'}
-		  IsRandom={'true'}
-		  Color={'red'}
-		/>
-      </div>
-    );
+```css
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translate(-100%, 0);
+    animation-timing-function: ease-out;
   }
 }
 ```
 
 ## Props
 
-### Size
-The HTML element you want your marquee displayed as, h1, h2..., h6, p.
+- **texts**: `string[]` — Messages to cycle through. Required.
+- **crossTimeMs**: `number` — Time (ms) for one full horizontal pass. Required.
+- **changeIntervalMs**: `number` — Interval (ms) between text changes. Defaults to the same value as `crossTimeMs` if not provided.
+- **random**: `boolean` — If true, texts are shown in random order. Defaults to `false`.
+- **as**: `keyof JSX.IntrinsicElements` — HTML tag to render (e.g. `h1`, `p`). Defaults to `p`.
+- **color**: `string` — Text color (CSS value). Optional.
 
-- Type: string
-- Required
+TypeScript types are shipped with the package, so your editor will auto-complete these props.
 
-### NumberOfOptions
-How many text options. Will always be one more than the biggest index supplied, due to zero being the first index. i.e If your last string is Index3, your NumberOfOptions will be 4.
+## Accessibility
 
-- Type: String
-- Required
+- Renders as semantic text (`as` prop)
+- No automatic ARIA roles are added; set any additional attributes you need on the component
 
-### Index#
-Since you can have various strings appear in your marquee, you can assign them here. If you only want one string, simply provide Index0. The maximum number of different string you can provide is 11, thus Index10 will be the last input.
+## Examples
 
-- Type: String
-- Minimum 1: Index0, Maximum 11: Index10
+- Live demo: [marquee-react-dwyer.surge.sh](https://marquee-react-dwyer.surge.sh/)
 
-### TimeToCross
-The time in milliseconds that it takes the text to go from the right side of the screen to the left side of the screen.
+## Contributing
 
-- Type: Number in Milliseconds
-- Required
+Issues and PRs are welcome. To work locally:
 
-### TimeToChange
-The time in milliseconds that it takes for the sting being displayed in the marquee to rotate to the next string. If this time is equal to TimeToCross the marquee will display one unique string per one pass of the screen.
+```bash
+pnpm install # or npm/yarn
+pnpm build
+pnpm test
+```
 
-- Type: Number
-- Default: `0`
+Please follow conventional commits and include tests for behavior changes.
 
+### Run Storybook
 
-### IsRandom
-If true, the strings you provided for the marquee will be randomly rotated and displayed. If set to false or an empty string, the strings will appear in order of index, zero first.
+```bash
+pnpm storybook
+# or
+npm run storybook
+# or
+yarn storybook
+```
 
-- Type: Boolean String
-- Required
+Build a static Storybook site:
 
-### Color
-The color of the text in the marquee.
+```bash
+pnpm build-storybook
+```
 
-- Type: CSS Color or hexadecimal color code
-- Required
+### Run tests
+
+```bash
+pnpm test
+# or
+npm test
+# or
+yarn test
+```
+
+## Versioning
+
+This package follows semver. Breaking changes will bump the major version.
 
 ## License
 
-MIT
-
-Copyright 2020 Daniel P. Dwyer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT © Daniel P. Dwyer

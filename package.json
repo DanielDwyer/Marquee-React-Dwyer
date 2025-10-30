@@ -1,43 +1,76 @@
 {
   "name": "marquee-react-dwyer",
-  "version": "5.9.90",
-  "description": "a universal marquee component for react, just plug in some props and play!",
-  "main": "build/index.js",
-  "peerDependencies": {
-    "react": "^15.5.4"
-  },
-  "dependencies": {
-    "react": "^15.5.4",
-    "webpack": "^4.43.0"
-  },
-  "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack"
-  },
+  "version": "6.0.0-next.0",
+  "description": "A modern marquee component for React.",
+  "author": "daniel dwyer <danielpatrickdwyer@gmail.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/DanielDwyer/Marquee-React-Dwyer"
   },
-  "keywords": [
-    "marquee",
-    "react",
-    "simple",
-    "marquee",
-    "component"
-  ],
-  "author": "daniel dwyer danielpatrickdwyer@gmail.com",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DanielDwyer/Marquee-React-Dwyer/issues"
   },
   "homepage": "https://github.com/DanielDwyer/Marquee-React-Dwyer#readme",
+  "keywords": [
+    "marquee",
+    "react",
+    "component",
+    "animation",
+    "ticker"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=16.8 || 17 || 18 || 19",
+    "react-dom": ">=16.8 || 17 || 18 || 19"
+  },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "webpack-cli": "^3.3.11"
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.37.0",
+    "jsdom": "^27.0.1",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.2",
+    "@storybook/addon-essentials": "^8.3.4",
+    "@storybook/react": "^8.3.4",
+    "@storybook/react-vite": "^8.3.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "semantic-release": "^24.2.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.3",
+    "@semantic-release/npm": "^12.0.1",
+    "vite": "^5.4.10"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format cjs,esm --clean",
+    "dev": "tsup src/index.ts --dts --format cjs,esm --watch",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "demo": "vite",
+    "build:demo": "vite build",
+    "release": "semantic-release"
   }
 }

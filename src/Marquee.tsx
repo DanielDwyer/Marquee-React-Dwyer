@@ -79,34 +79,29 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
   const color = props.color ?? props.Color;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<number | null>(null);
+  const spanRef = useRef<HTMLSpanElement | null>(null);
 
+  // Change text only after a full animation iteration so the user always
+  // sees the string complete one full pass before switching.
   useEffect(() => {
-    if (!Array.isArray(texts) || texts.length === 0) return;
+    const el = spanRef.current;
+    if (!el || !Array.isArray(texts) || texts.length === 0) return;
 
-    if (intervalRef.current) {
-      window.clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-
-    if (random) {
-      intervalRef.current = window.setInterval(() => {
+    const handleIteration = () => {
+      if (texts.length <= 1) return;
+      if (random) {
         const next = Math.floor(Math.random() * texts.length);
         setCurrentIndex(next);
-      }, changeIntervalMs);
-    } else {
-      intervalRef.current = window.setInterval(() => {
+      } else {
         setCurrentIndex((prev) => (prev + 1) % texts.length);
-      }, changeIntervalMs);
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-        intervalRef.current = null;
       }
     };
-  }, [texts, changeIntervalMs, random]);
+
+    el.addEventListener('animationiteration', handleIteration);
+    return () => {
+      el.removeEventListener('animationiteration', handleIteration);
+    };
+  }, [texts, random]);
 
   const Tag = as as unknown as React.ElementType;
   const text = texts[currentIndex] ?? '';
@@ -118,11 +113,20 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
     ...(props.style || {})
   };
 
+  // Use the change interval as the animation duration if provided so the
+  // animation iteration and text change are perfectly in sync.
+  const effectiveDurationMs = Number(
+    props.changeIntervalMs ?? props.TimeToChange ?? crossTimeMs
+  );
+
   const spanStyle: React.CSSProperties = {
     display: 'inline-block',
     paddingLeft: '100%',
-    animation: `marquee ${Number(crossTimeMs)}ms linear infinite`,
+    animation: `marquee ${effectiveDurationMs}ms linear infinite`,
     color: color,
+    willChange: 'transform',
+    transform: 'translate3d(0, 0, 0)',
+    backfaceVisibility: 'hidden'
   };
 
   // Ensure keyframes exist at runtime if consumer hasn't defined them
@@ -132,7 +136,7 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
     if (document.getElementById(styleId)) return;
     const el = document.createElement('style');
     el.id = styleId;
-    el.textContent = `@keyframes marquee { 0% { transform: translate(0, 0); animation-timing-function: ease-in; } 100% { transform: translate(-100%, 0); animation-timing-function: ease-out; } }`;
+    el.textContent = `@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }`;
     document.head.appendChild(el);
   }, []);
 
@@ -143,7 +147,7 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
   return (
     <section id="marquee">
       <Tag style={containerStyle} className={props.className}>
-        <span style={spanStyle}>{text}</span>
+        <span ref={spanRef} style={spanStyle}>{text}</span>
       </Tag>
     </section>
   );

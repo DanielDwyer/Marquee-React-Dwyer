@@ -89,5 +89,5 @@ root.render(
 
       <footer className="footer">© {new Date().getFullYear()} The Marquee Times</footer>
     </div>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

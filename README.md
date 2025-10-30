@@ -27,6 +27,7 @@ yarn add marquee-react-dwyer
 Peer requirements:
 
 - React >= 16.8
+- React DOM >= 16.8
 
 ## Quick start
 
@@ -54,12 +55,10 @@ The component will automatically inject a default `@keyframes marquee` animation
 ```css
 @keyframes marquee {
   0% {
-    transform: translate(0, 0);
-    animation-timing-function: ease-in;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate(-100%, 0);
-    animation-timing-function: ease-out;
+    transform: translate3d(-100%, 0, 0);
   }
 }
 ```
@@ -67,18 +66,23 @@ The component will automatically inject a default `@keyframes marquee` animation
 ## Props
 
 - **texts**: `string[]` — Messages to cycle through. Required.
-- **crossTimeMs**: `number` — Time (ms) for one full horizontal pass. Required.
-- **changeIntervalMs**: `number` — Interval (ms) between text changes. Defaults to the same value as `crossTimeMs` if not provided.
+- **crossTimeMs**: `number` — Time (ms) for one full horizontal pass. Used as fallback animation duration if `changeIntervalMs` is not provided. Defaults to `8000`.
+- **changeIntervalMs**: `number` — Interval (ms) between text changes. Also controls the animation duration to keep text changes and animation iterations in sync. Defaults to `2000`.
 - **random**: `boolean` — If true, texts are shown in random order. Defaults to `false`.
-- **as**: `keyof JSX.IntrinsicElements` — HTML tag to render (e.g. `h1`, `p`). Defaults to `p`.
+- **as**: `keyof JSX.IntrinsicElements` — HTML tag to render (e.g. `h1`, `p`). Defaults to `h3`.
 - **color**: `string` — Text color (CSS value). Optional.
+- **style**: `React.CSSProperties` — Inline styles for the container element. Optional.
+- **className**: `string` — CSS class name for the container element. Optional.
 
 TypeScript types are shipped with the package, so your editor will auto-complete these props.
+
+**Note**: Legacy props (Index0–Index10, NumberOfOptions, TimeToChange, TimeToCross, Size, IsRandom, Color) are supported for backward compatibility but deprecated.
 
 ## Accessibility
 
 - Renders as semantic text (`as` prop)
 - No automatic ARIA roles are added; set any additional attributes you need on the component
+- The component is wrapped in a `<section id="marquee">` element
 
 ## Examples
 

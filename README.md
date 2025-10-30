@@ -129,3 +129,18 @@ This package follows semver. Breaking changes will bump the major version.
 ## License
 
 MIT © Daniel P. Dwyer
+
+## Release and publishing
+
+Releases are automated via semantic-release when changes land on `main`.
+
+- Commit messages should follow Conventional Commits (e.g., `feat:`, `fix:`) so semantic-release can determine the version bump.
+- The GitHub Actions workflow builds and publishes to npm on successful release.
+
+Required secret for publishing:
+
+- `NPM_TOKEN`: An npm “Automation” access token (not an “Always” or “Read-only” token). Create at npmjs.com → Access Tokens → Generate → Automation, then add it to GitHub → Settings → Secrets and variables → Actions → New repository secret.
+
+Manually retrying a release:
+
+- Re-run the failed “Release” workflow run on `main`, or push a docs-only commit to `main` to trigger a new release run.

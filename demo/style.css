@@ -65,6 +65,14 @@ body {
   border-bottom: 1px solid var(--rule);
   padding: 8px 0;
   margin: 16px 0;
+  overflow: hidden; /* prevent layout shift on text change */
+}
+
+/* Large ticker variant for hero area to stabilize height */
+.ticker-lg {
+  display: flex;
+  align-items: center;
+  height: 44px; /* matches ~28px font-size with comfortable line-height */
 }
 
 .grid {
@@ -74,10 +82,25 @@ body {
   margin-top: 16px;
 }
 
+<<<<<<< HEAD
+.card h3 {
+  margin-top: 0;
+}
+.card p {
+  margin: 0.5rem 0;
+}
+
+.byline {
+  color: var(--muted-ink);
+  font-style: italic;
+  font-size: 14px;
+}
+=======
 .card h3 { margin-top: 0; }
 .card p { margin: 0.5rem 0; }
 
 .byline { color: var(--muted-ink); font-style: italic; font-size: 14px; }
+>>>>>>> origin/main
 
 .footer {
   margin-top: 40px;
@@ -89,6 +112,11 @@ body {
 }
 
 /* Marquee local overrides for demo */
-.ticker h1, .ticker h2, .ticker p { margin: 0; }
-
-
+.ticker h1, .ticker h2, .ticker p {
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap; /* ensure single line */
+  will-change: transform; /* hint GPU */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

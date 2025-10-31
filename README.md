@@ -92,14 +92,19 @@ TypeScript types are shipped with the package, so your editor will auto-complete
 
 ## Contributing
 
-Issues and PRs are welcome. To work locally:
+Issues and PRs are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
+- Branch naming conventions (`feat/`, `fix/`, `chore/`, etc.)
+- Commit message conventions (Conventional Commits)
+- Versioning and release process
+
+**Quick start:**
 ```bash
 npm install
 npm test
 ```
 
-Please follow conventional commits and include tests for behavior changes.
+**Important:** This project uses semantic-release, so commit messages must follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat:`, `fix:`) to enable automatic versioning and publishing.
 
 ### Run tests
 
@@ -143,13 +148,26 @@ MIT © Daniel P. Dwyer (https://www.linkedin.com/in/inmocnideknil/)
 
 Releases are automated via semantic-release when changes land on `main`.
 
-- Commit messages should follow Conventional Commits (e.g., `feat:`, `fix:`) so semantic-release can determine the version bump.
+- Commit messages **must** follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat:`, `fix:`) so semantic-release can determine the version bump.
 - The GitHub Actions workflow builds and publishes to npm on successful release.
+- **Never manually update `package.json` version** or create Git tags - semantic-release handles this automatically.
 
-Required secret for publishing:
+### Version Bump Rules
 
-- `NPM_TOKEN`: An npm “Automation” access token (not an “Always” or “Read-only” token). Create at npmjs.com → Access Tokens → Generate → Automation, then add it to GitHub → Settings → Secrets and variables → Actions → New repository secret.
+- **PATCH** (6.0.1 → 6.0.2): `fix:` commits
+- **MINOR** (6.0.1 → 6.1.0): `feat:` commits
+- **MAJOR** (6.0.1 → 7.0.0): Commits with `BREAKING CHANGE:` footer or `feat!:`/`fix!:` types
 
-Manually retrying a release:
+**Note**: Versioning starts from `6.0.1` to avoid collisions with previous `5.x.x` and `6.0.0` versions published to npm. Semantic-release automatically ensures the published version is never lower than versions already on npm.
 
-- Re-run the failed “Release” workflow run on `main`, or push a docs-only commit with a Conventional Commit (e.g., `fix: docs`) to trigger a new patch release.
+### Required Secrets
+
+- `NPM_TOKEN`: An npm "Automation" access token (not an "Always" or "Read-only" token). Create at npmjs.com → Access Tokens → Generate → Automation, then add it to GitHub → Settings → Secrets and variables → Actions → New repository secret.
+
+### Troubleshooting
+
+If you notice version mismatches between `package.json`, Git tags, and npm:
+1. Verify GitHub Actions release workflow completed successfully
+2. Ensure no manual publishes occurred
+3. Check that all commits follow Conventional Commits format
+4. Re-run the failed "Release" workflow on `main`, or push a docs-only commit (e.g., `fix: docs`) to trigger a new patch release

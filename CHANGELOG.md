@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.2.1...v1.2.2) (2025-10-31)
+
+
+### Bug Fixes
+
+* remove unused variable assignment ([ffffcc6](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/ffffcc629699e763cf84e920c1fbcf641be23ba4))
+
 ## [1.2.1](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.2.0...v1.2.1) (2025-10-31)
 
 

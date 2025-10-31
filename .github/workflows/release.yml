@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci || npm i --cache ./npm-cache
+          cache: 'npm'
+      - run: npm ci
       - run: npm run build
       - run: npm run release
         env:

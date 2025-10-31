@@ -2,7 +2,7 @@
   "name": "marquee-react-dwyer",
   "version": "6.0.1",
   "description": "A modern marquee component for React.",
-  "author": "daniel dwyer <danielpatrickdwyer@gmail.com>",
+  "author": "Daniel Dwyer <danielpatrickdwyer@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,12 +28,19 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "peerDependencies": {
-    "react": ">=16.8 || 17 || 18 || 19",
-    "react-dom": ">=16.8 || 17 || 18 || 19"
+    "react": "^16.8 || ^17 || ^18 || ^19",
+    "react-dom": "^16.8 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -53,6 +60,7 @@
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "jsdom": "^27.0.1",
     "prettier": "^3.3.3",
     "react": "^18.3.1",

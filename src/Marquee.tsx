@@ -1,19 +1,18 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-export type MarqueeProps = {
+export type MarqueeProps<T extends keyof JSX.IntrinsicElements = 'h3'> = {
   texts: string[];
   changeIntervalMs?: number;
   crossTimeMs?: number;
   random?: boolean;
-  as?: keyof JSX.IntrinsicElements;
+  as?: T;
   color?: string;
   style?: React.CSSProperties;
   className?: string;
-};
+} & Omit<React.ComponentPropsWithoutRef<T>, 'style' | 'className'>;
 
-// Back-compat props (deprecated): Index0..Index10, NumberOfOptions, TimeToChange, TimeToCross, Size, IsRandom, Color
+// Back-compat props (deprecated): Index0..Index10, TimeToChange, TimeToCross, Size, IsRandom, Color
 export type LegacyProps = Partial<{
-  NumberOfOptions: string | number;
   TimeToChange: string | number;
   TimeToCross: string | number;
   Size: keyof JSX.IntrinsicElements;
@@ -66,20 +65,47 @@ function collectLegacyTexts(legacy: LegacyProps): string[] {
     .filter((v): v is string => Boolean(v));
 }
 
-export type CombinedProps = MarqueeProps & LegacyProps;
+export type CombinedProps<T extends keyof JSX.IntrinsicElements = 'h3'> = MarqueeProps<T> & LegacyProps;
 
-export const Marquee: React.FC<CombinedProps> = (props) => {
+const KEYFRAME_NAME = 'mrd-marquee';
+const STYLE_ID = '__marquee-react-dwyer-keyframes__';
+
+function hasExistingKeyframes(name: string): boolean {
+  if (typeof document === 'undefined') return false;
+  try {
+    const stylesheets = Array.from(document.styleSheets);
+    for (const sheet of stylesheets) {
+      try {
+        const rules = Array.from(sheet.cssRules || sheet.rules || []);
+        for (const rule of rules) {
+          if (rule instanceof CSSKeyframesRule && rule.name === name) {
+            return true;
+          }
+        }
+      } catch {
+        // Cross-origin stylesheets may throw, ignore
+      }
+    }
+  } catch {
+    // Fallback: check if our own style element exists
+  }
+  return false;
+}
+
+export function Marquee<T extends keyof JSX.IntrinsicElements = 'h3'>(props: CombinedProps<T>) {
   const legacyTexts = useMemo(() => collectLegacyTexts(props), [props]);
   const texts = props.texts && props.texts.length > 0 ? props.texts : legacyTexts;
 
   const changeIntervalMs = props.changeIntervalMs ?? coerceNumber(props.TimeToChange, 2000);
   const crossTimeMs = props.crossTimeMs ?? coerceNumber(props.TimeToCross, 8000);
   const random = props.random ?? coerceBooleanString(props.IsRandom, false);
-  const as = props.as ?? props.Size ?? 'h3';
+  const as = (props.as ?? props.Size ?? 'h3') as T;
   const color = props.color ?? props.Color;
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const previousRandomIndexRef = useRef<number | null>(null);
   const spanRef = useRef<HTMLSpanElement | null>(null);
+  const sectionIdRef = useRef(`marquee-${Math.random().toString(36).substring(2, 11)}`);
 
   // Change text only after a full animation iteration so the user always
   // sees the string complete one full pass before switching.
@@ -90,7 +116,12 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
     const handleIteration = () => {
       if (texts.length <= 1) return;
       if (random) {
-        const next = Math.floor(Math.random() * texts.length);
+        let next = Math.floor(Math.random() * texts.length);
+        // Avoid consecutive duplicates if there are at least 2 options
+        if (texts.length > 1 && previousRandomIndexRef.current !== null && next === previousRandomIndexRef.current) {
+          next = (next + 1) % texts.length;
+        }
+        previousRandomIndexRef.current = next;
         setCurrentIndex(next);
       } else {
         setCurrentIndex((prev) => (prev + 1) % texts.length);
@@ -103,14 +134,42 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
     };
   }, [texts, random]);
 
-  const Tag = as as unknown as React.ElementType;
+  const Tag = as;
   const text = texts[currentIndex] ?? '';
+
+  const {
+    style: propsStyle,
+    className,
+    as: _as,
+    texts: _texts,
+    changeIntervalMs: _changeIntervalMs,
+    crossTimeMs: _crossTimeMs,
+    random: _random,
+    color: _color,
+    TimeToChange: _TimeToChange,
+    TimeToCross: _TimeToCross,
+    Size: _Size,
+    IsRandom: _IsRandom,
+    Color: _Color,
+    Index0: _Index0,
+    Index1: _Index1,
+    Index2: _Index2,
+    Index3: _Index3,
+    Index4: _Index4,
+    Index5: _Index5,
+    Index6: _Index6,
+    Index7: _Index7,
+    Index8: _Index8,
+    Index9: _Index9,
+    Index10: _Index10,
+    ...restProps
+  } = props;
 
   const containerStyle: React.CSSProperties = {
     margin: '0 auto',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
-    ...(props.style || {})
+    ...(propsStyle || {})
   };
 
   // Use the change interval as the animation duration if provided so the
@@ -122,7 +181,7 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
   const spanStyle: React.CSSProperties = {
     display: 'inline-block',
     paddingLeft: '100%',
-    animation: `marquee ${effectiveDurationMs}ms linear infinite`,
+    animation: `${KEYFRAME_NAME} ${effectiveDurationMs}ms linear infinite`,
     color: color,
     willChange: 'transform',
     transform: 'translate3d(0, 0, 0)',
@@ -131,12 +190,13 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
 
   // Ensure keyframes exist at runtime if consumer hasn't defined them
   useEffect(() => {
-    const styleId = '__marquee-react-dwyer-keyframes__';
     if (typeof document === 'undefined') return;
-    if (document.getElementById(styleId)) return;
+    if (document.getElementById(STYLE_ID)) return;
+    if (hasExistingKeyframes(KEYFRAME_NAME)) return;
+    
     const el = document.createElement('style');
-    el.id = styleId;
-    el.textContent = `@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }`;
+    el.id = STYLE_ID;
+    el.textContent = `@keyframes ${KEYFRAME_NAME} { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }`;
     document.head.appendChild(el);
   }, []);
 
@@ -145,13 +205,13 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
   }
 
   return (
-    <section id="marquee">
-      <Tag style={containerStyle} className={props.className}>
+    <section className="marquee-react-dwyer" id={sectionIdRef.current}>
+      <Tag style={containerStyle} className={className} {...restProps}>
         <span ref={spanRef} style={spanStyle}>{text}</span>
       </Tag>
     </section>
   );
-};
+}
 
 export default Marquee;
 

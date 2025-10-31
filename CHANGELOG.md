@@ -1,3 +1,11 @@
+## [6.0.1](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v6.0.0...v6.0.1) (2025-10-31)
+
+
+### Bug Fixes
+
+* add missing conventionalcommits dependency and fix checkout action ([7c75a12](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/7c75a12190464fd987ef98d50ffc0d575b227493))
+* fetch git tags in release workflow ([b97925b](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/b97925b899ceab4e2b86235106b14d066b6ba5df))
+
 ## [1.2.2](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.2.1...v1.2.2) (2025-10-31)
 
 

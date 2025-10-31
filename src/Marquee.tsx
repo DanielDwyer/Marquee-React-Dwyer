@@ -116,7 +116,7 @@ export const Marquee: React.FC<CombinedProps> = (props) => {
   // Use the change interval as the animation duration if provided so the
   // animation iteration and text change are perfectly in sync.
   const effectiveDurationMs = Number(
-    props.changeIntervalMs ?? props.TimeToChange ?? crossTimeMs
+    changeIntervalMs ?? crossTimeMs
   );
 
   const spanStyle: React.CSSProperties = {

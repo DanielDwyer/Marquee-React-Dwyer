@@ -1,8 +1,14 @@
 # marquee-react-dwyer
 
 [![npm version](https://img.shields.io/npm/v/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
-[![downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
-[![license](https://img.shields.io/npm/l/marquee-react-dwyer.svg)](./LICENSE)
+
+[![Downloads](https://img.shields.io/npm/dm/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
+
+[![Downloads](https://img.shields.io/npm/dt/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
+
+[![Downloads](https://img.shields.io/npm/dw/marquee-react-dwyer.svg)](https://www.npmjs.com/package/marquee-react-dwyer)
+
+[![License](https://img.shields.io/npm/l/marquee-react-dwyer.svg)](LICENSE)
 
 Modern, typed marquee component for React 16.8+ (Hooks). Ships ESM and CJS builds.
 
@@ -17,11 +23,7 @@ Modern, typed marquee component for React 16.8+ (Hooks). Ships ESM and CJS build
 ## Install
 
 ```bash
-npm i marquee-react-dwyer
-# or
-pnpm add marquee-react-dwyer
-# or
-yarn add marquee-react-dwyer
+npm install marquee-react-dwyer
 ```
 
 Peer requirements:
@@ -29,7 +31,7 @@ Peer requirements:
 - React >= 16.8
 - React DOM >= 16.8
 
-## Quick start
+## Quick Start
 
 ```tsx
 import { Marquee } from 'marquee-react-dwyer';
@@ -93,37 +95,40 @@ TypeScript types are shipped with the package, so your editor will auto-complete
 Issues and PRs are welcome. To work locally:
 
 ```bash
-pnpm install # or npm/yarn
-pnpm build
-pnpm test
+npm install
+npm test
 ```
 
 Please follow conventional commits and include tests for behavior changes.
 
+### Run tests
+
+```bash
+npm test
+```
+
+### Lint code
+
+```bash
+npm run lint
+```
+
+### Build
+
+```bash
+npm run build
+```
+
 ### Run Storybook
 
 ```bash
-pnpm storybook
-# or
 npm run storybook
-# or
-yarn storybook
 ```
 
 Build a static Storybook site:
 
 ```bash
-pnpm build-storybook
-```
-
-### Run tests
-
-```bash
-pnpm test
-# or
-npm test
-# or
-yarn test
+npm run build-storybook
 ```
 
 ## Versioning

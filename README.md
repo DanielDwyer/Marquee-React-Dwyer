@@ -52,10 +52,10 @@ export default function Example() {
 
 ## Styling and keyframes
 
-The component will automatically inject a default `@keyframes marquee` animation if one is not already present. To customize the easing or behavior, define your own keyframes in your global CSS to override the default:
+The component will automatically inject a default `@keyframes mrd-marquee` animation if one is not already present in your stylesheets. The component checks existing stylesheets to avoid overriding your custom keyframes. To customize the easing or behavior, define your own keyframes in your global CSS using the same name:
 
 ```css
-@keyframes marquee {
+@keyframes mrd-marquee {
   0% {
     transform: translate3d(0, 0, 0);
   }
@@ -76,15 +76,17 @@ The component will automatically inject a default `@keyframes marquee` animation
 - **style**: `React.CSSProperties` — Inline styles for the container element. Optional.
 - **className**: `string` — CSS class name for the container element. Optional.
 
+Additionally, all native HTML attributes for the element specified by `as` are accepted and passed through (e.g., `aria-label`, `role`, `title`, `data-*` attributes).
+
 TypeScript types are shipped with the package, so your editor will auto-complete these props.
 
-**Note**: Legacy props (Index0–Index10, NumberOfOptions, TimeToChange, TimeToCross, Size, IsRandom, Color) are supported for backward compatibility but deprecated.
+**Note**: Legacy props (Index0–Index10, TimeToChange, TimeToCross, Size, IsRandom, Color) are supported for backward compatibility but deprecated.
 
 ## Accessibility
 
 - Renders as semantic text (`as` prop)
-- No automatic ARIA roles are added; set any additional attributes you need on the component
-- The component is wrapped in a `<section id="marquee">` element
+- No automatic ARIA roles are added; set any additional attributes (e.g., `aria-label`, `role`, `title`) you need on the component — all native HTML attributes are passed through
+- The component is wrapped in a `<section>` element with a unique generated `id` and class `marquee-react-dwyer` to avoid duplicate IDs when multiple instances are used
 
 ## Examples
 
@@ -99,6 +101,7 @@ Issues and PRs are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for d
 - Versioning and release process
 
 **Quick start:**
+
 ```bash
 npm install
 npm test
@@ -167,6 +170,7 @@ Releases are automated via semantic-release when changes land on `main`.
 ### Troubleshooting
 
 If you notice version mismatches between `package.json`, Git tags, and npm:
+
 1. Verify GitHub Actions release workflow completed successfully
 2. Ensure no manual publishes occurred
 3. Check that all commits follow Conventional Commits format

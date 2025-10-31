@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.2.0...v1.2.1) (2025-10-31)
+
+
+### Bug Fixes
+
+* update README and marquee implementation with latest improvements ([cfe5efb](https://github.com/DanielDwyer/Marquee-React-Dwyer/commit/cfe5efb0b8b433b9b32bc0a948160271b2b78e9e))
+
 # [1.2.0](https://github.com/DanielDwyer/Marquee-React-Dwyer/compare/v1.1.0...v1.2.0) (2025-10-30)
 
 
